@@ -8,9 +8,13 @@ public class PlayerController : MonoBehaviour
     private Vector3 direction;
     public float forwardSpeed;
 
+    //saða sola dönüþ
     private int desiredLane = 1;//0:left 1:middle 2:right
     public float laneDistance = 4;//iki lane arasý uzaklýk
 
+    //zýplama
+    public float jumpForce;
+    public float Gravity;
 
     void Start()
     {
@@ -22,6 +26,21 @@ public class PlayerController : MonoBehaviour
     {
         direction.z = forwardSpeed;
 
+        //zýplama komutlarý
+        if (controller.isGrounded)
+        {
+            direction.y = -1;
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                jump();
+            }
+        }
+        else
+        {
+            direction.y += Gravity * Time.deltaTime;
+        }
+
+        //saða sola dönme komutlarý
         if(Input.GetKeyDown(KeyCode.RightArrow)) 
         {
             desiredLane++;
@@ -57,6 +76,11 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         controller.Move(direction * Time.fixedDeltaTime);
+    }
+
+    private void jump()
+    {
+        direction.y = jumpForce;
     }
 
 }

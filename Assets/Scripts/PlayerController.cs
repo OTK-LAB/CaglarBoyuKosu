@@ -1,86 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    private CharacterController controller;
-    private Vector3 direction;
-    public float forwardSpeed;
+    void Update(){
+        if(Input.GetKey("a")){
+            GetComponent<Rigidbody>().AddForce(-50, 0, 0, ForceMode.Force);
+        }
 
-    //saða sola dönüþ
-    private int desiredLane = 1;//0:left 1:middle 2:right
-    public float laneDistance = 4;//iki lane arasý uzaklýk
-
-    //zýplama
-    public float jumpForce;
-    public float Gravity;
-
-    void Start()
-    {
-        controller= GetComponent<CharacterController>();
+        else if(Input.GetKey("d")){
+            GetComponent<Rigidbody>().AddForce(50, 0, 0, ForceMode.Force);
+        }
+    }
+    
+    
+    void FixedUpdate(){
+        GetComponent<Rigidbody>().velocity = new Vector3(0,0,-10);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        direction.z = forwardSpeed;
+        
 
-        //zýplama komutlarý
-        if (controller.isGrounded)
-        {
-            direction.y = -1;
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                jump();
-            }
-        }
-        else
-        {
-            direction.y += Gravity * Time.deltaTime;
+    void OnTriggerEnter(Collider other){
+        if(other.gameObject.tag =="puan"){
+            Destroy(other.gameObject);
         }
 
-        //saða sola dönme komutlarý
-        if(Input.GetKeyDown(KeyCode.RightArrow)) 
-        {
-            desiredLane++;
-            if(desiredLane == 3 ) 
-            { 
-                desiredLane= 2;          
-            }       
-        }
-
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            desiredLane--;
-            if (desiredLane == -1)
-            {
-                desiredLane = 0;
-            }
-        }
-
-        Vector3 targetPosition = transform.position.z * transform.forward + transform.position.y * transform.up;
-
-        if (desiredLane == 0)
-        {
-            targetPosition += Vector3.left * laneDistance;
-        }else if (desiredLane == 2)
-        {
-            targetPosition += Vector3.right * laneDistance;
-        }
-
-        transform.position = Vector3.Lerp(transform.position, targetPosition, 80 * Time.fixedDeltaTime);
-
-    }
-
-    private void FixedUpdate()
-    {
-        controller.Move(direction * Time.fixedDeltaTime);
-    }
-
-    private void jump()
-    {
-        direction.y = jumpForce;
     }
 
 }

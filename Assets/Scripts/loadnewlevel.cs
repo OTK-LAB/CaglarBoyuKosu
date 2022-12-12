@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class loadnewlevel : MonoBehaviour
 {
-    public int iLevelToLoad;
+    public string iLevelToLoad;
     public string sLevelToLoad;
 
     public bool useIntegerToLoadLevel = false;

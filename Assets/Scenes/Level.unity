@@ -825,6 +825,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4813242881b30ca44b90342564219524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpForce: 7
+  rigid: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  raycastDistance: 0.6
 --- !u!54 &1305351747
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -988,6 +994,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4813242881b30ca44b90342564219524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpForce: 7
+  rigid: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  raycastDistance: 0.6
 --- !u!143 &1815495295
 CharacterController:
   m_ObjectHideFlags: 0

@@ -7,6 +7,21 @@ using UnityEngine.SceneManagement;
 public class GameOverScreen : MonoBehaviour
 {
     public Text pointsText;
+    public int scoreNum;
+
+    void start()
+    {
+        scoreNum = 0;
+        pointsText.text = scoreNum + " POINTS";
+    }
+
+    void OnTriggerEnter(Collider other){
+        if(other.gameObject.tag =="puan"){
+           scoreNum += 10;
+           pointsText.text = scoreNum + " POINTS";
+        }
+
+    }
 
     public void Setup(int score){
         gameObject.SetActive(true);

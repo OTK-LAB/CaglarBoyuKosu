@@ -38,11 +38,11 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKey("a"))
             {
-                GetComponent<Rigidbody>().AddForce(-50, 0, 0, ForceMode.Force);
+                GetComponent<Rigidbody>().AddForce(-150, 0, 0, ForceMode.Force);
             }
             else if (Input.GetKey("d"))
             {
-                GetComponent<Rigidbody>().AddForce(50, 0, 0, ForceMode.Force);
+                GetComponent<Rigidbody>().AddForce(150, 0, 0, ForceMode.Force);
             }
         }
 

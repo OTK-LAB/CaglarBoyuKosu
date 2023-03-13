@@ -3909,7 +3909,7 @@ MonoBehaviour:
     m_Bits: 55
   raycastDistance: 0.6
   isJumping: 0
---- !u!114 &1815495305
+--- !u!114 &1815495309
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3923,7 +3923,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointsText: {fileID: 384315033}
   scoreNum: 0
---- !u!114 &1815495307
+--- !u!114 &1815495310
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3936,7 +3936,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1815495301}
-  screen: {fileID: 1815495290}
+  screen: {fileID: 177057437}
 --- !u!1001 &1874150402
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5516,6 +5516,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "kurua\u011Fa\xE7_1"
       objectReference: {fileID: 0}
+    - target: {fileID: 8358979820739868178, guid: cfbbf4f31bc14cf448bdee00371b3082, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfbbf4f31bc14cf448bdee00371b3082, type: 3}
 --- !u!1001 &6497092859963260411
@@ -5661,6 +5665,10 @@ PrefabInstance:
     - target: {fileID: 9027119111045102212, guid: 6ee34129f25d4b048b9b9a710ed5f4ed, type: 3}
       propertyPath: m_Name
       value: Stone
+      objectReference: {fileID: 0}
+    - target: {fileID: 9027119111045102215, guid: 6ee34129f25d4b048b9b9a710ed5f4ed, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9027119111045102264, guid: 6ee34129f25d4b048b9b9a710ed5f4ed, type: 3}
       propertyPath: m_RootOrder

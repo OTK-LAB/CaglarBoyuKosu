@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1365575053179693596}
   - component: {fileID: 3825676008577162966}
   - component: {fileID: 3750555280711475180}
+  - component: {fileID: -8454811502951828332}
   m_Layer: 0
   m_Name: kaya_1
   m_TagString: Obstacle
@@ -92,8 +93,24 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3321251340265881347}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.0070108282, y: 0.0050602476, z: 0.004828957}
   m_Center: {x: 0.00008550349, y: -0.0001635837, z: 0.0020290322}
+--- !u!54 &-8454811502951828332
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3321251340265881347}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0

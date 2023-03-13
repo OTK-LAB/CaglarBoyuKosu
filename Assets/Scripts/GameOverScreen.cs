@@ -15,31 +15,36 @@ public class GameOverScreen : MonoBehaviour
         pointsText.text = scoreNum + " POINTS";
     }
 
-    void OnTriggerEnter(Collider other){
-        if(other.gameObject.tag =="puan"){
-           scoreNum += 10;
-           pointsText.text = scoreNum + " POINTS";
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "puan")
+        {
+            scoreNum += 10;
+            pointsText.text = scoreNum + " POINTS";
         }
 
     }
 
-    public void Setup(int score){
+    public void Setup(int score)
+    {
         gameObject.SetActive(true);
         pointsText.text = score.ToString() + " POINTS";
     }
 
-    public void RestartButton(){
+    public void RestartButton()
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void MenuButton(){
+    public void MenuButton()
+    {
         SceneManager.LoadScene("Menu");
     }
-    
+
     public void QuitGame()
     {
         Debug.Log("QUIT");
         Application.Quit();
-    }    
+    }
 }
 

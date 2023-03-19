@@ -11,9 +11,10 @@ public class PlayerController : MonoBehaviour
     public float raycastDistance = 0.6f;
 
     private bool isGrounded;
-    public bool isJumping;
+    private bool isJumping;
+    private bool isRolling;
 
-    private bool canMove = true; // Yeni bir değişken ekledik
+    private bool canMove = true;
 
     public void Start()
     {
@@ -22,30 +23,33 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (canMove) // Eğer hareket edebilirsek karakteri hareket ettiriyoruz
+        if (canMove)
         {
-            GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 10);
-        }
-        else
-        {
-            GetComponent<Rigidbody>().velocity = Vector3.zero;
+            if (!isRolling)
+            {
+                GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 10);
+            }
+            else
+            {
+                GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 10);
+            }
+
+            if (canMove && isGrounded && !isRolling)
+            {
+                if (Input.GetKey("a"))
+                {
+                    GetComponent<Rigidbody>().AddForce(-950, 0, 0, ForceMode.Force);
+                }
+                else if (Input.GetKey("d"))
+                {
+                    GetComponent<Rigidbody>().AddForce(950, 0, 0, ForceMode.Force);
+                }
+            }
         }
     }
 
     void Update()
     {
-        if (canMove && isGrounded) // Eğer hareket edebilirsek ve yerdeysek karakteri hareket ettiriyoruz
-        {
-            if (Input.GetKey("a"))
-            {
-                GetComponent<Rigidbody>().AddForce(-150, 0, 0, ForceMode.Force);
-            }
-            else if (Input.GetKey("d"))
-            {
-                GetComponent<Rigidbody>().AddForce(150, 0, 0, ForceMode.Force);
-            }
-        }
-
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down, out hit, raycastDistance, groundLayer))
             isGrounded = true;
@@ -58,6 +62,20 @@ public class PlayerController : MonoBehaviour
             isJumping = true;
             Camera.main.GetComponent<CameraController>().StopFollowingPlayer();
         }
+
+        if (Input.GetKeyDown(KeyCode.S) && !isRolling)
+        {
+            isRolling = true;
+            StartCoroutine(Roll());
+        }
+    }
+
+    IEnumerator Roll()
+    {
+        transform.localScale = new Vector3(0.2f, 0.2f, 0.2f); // karakteri yarı boyuta indir
+        yield return new WaitForSeconds(0.5f); // yarım saniye bekle
+        transform.localScale = new Vector3(0.25f, 0.25f, 0.25f); // karakteri eski haline getir
+        isRolling = false;
     }
 
     void OnCollisionEnter(Collision collision)
@@ -65,7 +83,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isJumping = false;
-            canMove = true; // Yere iner inmez tekrar hareket etmemizi sağlıyoruz
+            canMove = true;
         }
     }
 

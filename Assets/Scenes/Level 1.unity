@@ -1970,6 +1970,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &696022316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696022312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d57d470d04bebf48895cbf85c1f4670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 9027119111045102212, guid: 6ee34129f25d4b048b9b9a710ed5f4ed, type: 3}
+  projectileSpawnPoint: {fileID: 1553604221342507060, guid: b84b1efca793f364ea9bfe939432c987, type: 3}
+  projectileSpeed: 275
+  fireRate: 1
+  stopDistance: 35
+--- !u!114 &696022317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696022312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435bf447fe7152a4ab43d128a2ddb604, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hedef: {fileID: 2101739147}
+  mesafe: 100
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -4633,14 +4664,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4813242881b30ca44b90342564219524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 2101739146}
   jumpForce: 150
   rigid: {fileID: 2101739142}
   groundLayer:
     serializedVersion: 2
     m_Bits: 55
   raycastDistance: 0.6
-  isJumping: 0
 --- !u!95 &2101739146
 Animator:
   serializedVersion: 4
@@ -4661,6 +4690,11 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!4 &2101739147 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3de71f1d040481d4e81c714332fc72c0, type: 3}
+  m_PrefabInstance: {fileID: 2101739137}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2146421770
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4861,15 +4895,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1553604221342507060, guid: b84b1efca793f364ea9bfe939432c987, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.47
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1553604221342507060, guid: b84b1efca793f364ea9bfe939432c987, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1553604221342507060, guid: b84b1efca793f364ea9bfe939432c987, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 102.2
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 1553604221342507060, guid: b84b1efca793f364ea9bfe939432c987, type: 3}
       propertyPath: m_LocalRotation.w

@@ -9,22 +9,37 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float stopDistance = 5f;
     private Transform playerTransform;
     private bool isAttacking = false;
+    private Animator animator;
 
-    private void Start()
+    void Start()
     {
+        animator = GetComponent<Animator>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    private void Update()
+    void Update()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
 
         if (distanceToPlayer <= stopDistance && !isAttacking)
         {
-            isAttacking = true;
+            
+            isAttacking = true;           
             InvokeRepeating("FireProjectile", 0f, fireRate);
         }
+
+        if (isAttacking == true)
+        {
+            animator.SetBool("IsThrowing", true);
+        }
+        else
+        {
+            animator.SetBool("IsThrowing", false);
+        }
+        
     }
+
+    
 
     private void FireProjectile()
     {

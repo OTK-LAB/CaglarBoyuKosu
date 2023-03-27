@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private Animator animator;
     public float jumpForce = 7f;
     public Rigidbody rigid;
 
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
 
     public void Start()
     {
+        animator = GetComponent<Animator>();
         rigid = gameObject.GetComponent<Rigidbody>();
     }
 
@@ -51,10 +53,15 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, raycastDistance, groundLayer))
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, raycastDistance, groundLayer)) {
             isGrounded = true;
+            animator.SetBool("IsJumping", false);
+        }
         else
+        {
             isGrounded = false;
+            animator.SetBool("IsJumping", true);
+        }
 
         if (Input.GetKeyDown(KeyCode.W) && isGrounded)
         {

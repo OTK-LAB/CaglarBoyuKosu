@@ -1889,7 +1889,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ef950e0df90462a4f9e10da5a33d9ad6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 200
+      value: 189.74
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ef950e0df90462a4f9e10da5a33d9ad6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1926,6 +1926,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ef950e0df90462a4f9e10da5a33d9ad6, type: 3}
       propertyPath: m_Name
       value: Body_Legs.002
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ef950e0df90462a4f9e10da5a33d9ad6, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef950e0df90462a4f9e10da5a33d9ad6, type: 3}
@@ -1982,11 +1986,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d57d470d04bebf48895cbf85c1f4670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 9027119111045102212, guid: 6ee34129f25d4b048b9b9a710ed5f4ed, type: 3}
-  projectileSpawnPoint: {fileID: 1553604221342507060, guid: b84b1efca793f364ea9bfe939432c987, type: 3}
-  projectileSpeed: 275
-  fireRate: 1
-  stopDistance: 35
+  projectilePrefab: {fileID: 58182173}
+  projectileSpawnPoint: {fileID: 999490114}
+  projectileSpeed: 200
+  fireRate: 0.5
+  stopDistance: 0
 --- !u!114 &696022317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1996,11 +2000,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 696022312}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 435bf447fe7152a4ab43d128a2ddb604, type: 3}
+  m_Script: {fileID: 11500000, guid: eeb18dde560064f42bbacf45fc666508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hedef: {fileID: 2101739147}
-  mesafe: 100
+  moveSpeed: 4
+  leftBoundary: -7
+  rightBoundary: 7
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -3654,11 +3659,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d57d470d04bebf48895cbf85c1f4670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 58182173}
-  projectileSpawnPoint: {fileID: 999490114}
-  projectileSpeed: 300
+  projectilePrefab: {fileID: 0}
+  projectileSpawnPoint: {fileID: 0}
+  projectileSpeed: 10
   fireRate: 1
-  stopDistance: 35
+  stopDistance: 5
 --- !u!1 &1647534415
 GameObject:
   m_ObjectHideFlags: 0
@@ -4690,11 +4695,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!4 &2101739147 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3de71f1d040481d4e81c714332fc72c0, type: 3}
-  m_PrefabInstance: {fileID: 2101739137}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2146421770
 PrefabInstance:
   m_ObjectHideFlags: 0

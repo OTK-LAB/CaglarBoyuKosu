@@ -41,8 +41,9 @@ public class Enemy : MonoBehaviour
 
     
 
-    private void FireProjectile()
+    public void FireProjectile()
     {
+        isAttacking = true;
         Vector3 projectileDirection = (playerTransform.position - projectileSpawnPoint.position).normalized;
         Quaternion projectileRotation = Quaternion.LookRotation(projectileDirection);
 
@@ -52,6 +53,7 @@ public class Enemy : MonoBehaviour
         projectileRb.velocity = projectileDirection * projectileSpeed;
     }
 }
+
 
 
 

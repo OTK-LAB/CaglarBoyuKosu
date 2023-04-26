@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private bool isJumping;
     private bool isRolling;
+    private bool isFinished;
 
     private bool canMove = true;
 
@@ -27,13 +28,17 @@ public class PlayerController : MonoBehaviour
     {
         if (canMove)
         {
-            if (!isRolling)
+            if (!isRolling && !isFinished)
+            {
+                GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 10);
+            }
+            else if(isRolling && !isFinished)
             {
                 GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 10);
             }
             else
             {
-                GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 10);
+                GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);  // ileri hız bitiyor ama animasyon devam ediyor.
             }
 
             if (canMove && isGrounded && !isRolling)
@@ -91,6 +96,10 @@ public class PlayerController : MonoBehaviour
         {
             isJumping = false;
             canMove = true;
+        }
+        else if (collision.gameObject.CompareTag("Finish"))
+        {
+            isFinished = true;
         }
     }
 

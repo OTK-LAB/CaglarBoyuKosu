@@ -7,10 +7,11 @@ public class Health : MonoBehaviour
     public int startingHealth = 100;
     public int currentHealth;
     public Slider healthBar;
+    public Renderer _renderer;
 
     void Start()
     {
-        
+        _renderer = GetComponent<Renderer>();
         
         if (healthBar == null)
         {
@@ -25,17 +26,25 @@ public class Health : MonoBehaviour
     }
 
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)  // Debug.Log fonksiyonları çağırılmıyor bir hata var!!!
     {
         if (other.gameObject.CompareTag("Stone"))
         {
             // Stone objesiyle çarpıştığımızda canımız azalıyor
             TakeDamage(10);
+            Debug.Log("Canavar vuruldu");
+        }
+
+        else if(other.gameObject.CompareTag("Bullet"))
+        {
+            TakeDamage(10);
+            Debug.Log("Oyuncu vuruldu");
         }
     }
 
     void TakeDamage(int damage)
     {
+        Debug.Log("Fonksiyon çalıştı");
         currentHealth -= damage;
         healthBar.value = currentHealth;
 
@@ -54,6 +63,7 @@ public class Health : MonoBehaviour
     void Die()
     {
         GetComponent<PlayerController>().enabled = false;
+        _renderer.enabled = false;
         // karakter ölürse burada ölüm işlemleri yapılabilir
         // örneğin oyunun yeniden başlatılması veya bölüm geçiş ekranının açılması gibi
     }

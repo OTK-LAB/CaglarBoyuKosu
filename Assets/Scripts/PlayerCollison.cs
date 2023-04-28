@@ -17,10 +17,9 @@ public class PlayerCollison : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag == "rock")
+        if (collision.collider.tag == "Obstacle")
         {
             controller.enabled = false;
-            Debug.Log("Carpti");
             screen.SetActive(true);
         }
 

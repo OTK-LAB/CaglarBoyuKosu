@@ -28,7 +28,7 @@ public class Health : MonoBehaviour
 
     void OnTriggerEnter(Collider other)  // Debug.Log fonksiyonları çağırılmıyor bir hata var!!!
     {
-        if (other.gameObject.CompareTag("Stone"))
+        if (other.gameObject.CompareTag("Bullet"))
         {
             // Stone objesiyle çarpıştığımızda canımız azalıyor
             TakeDamage(10);

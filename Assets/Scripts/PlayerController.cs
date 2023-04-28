@@ -14,43 +14,32 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private bool isJumping;
     private bool isRolling;
-    private bool isFinished;
+    public bool isFinished;
 
-    private bool canMove = true;
+    public bool canMove = true;
 
     public void Start()
     {
         animator = GetComponent<Animator>();
-        rigid = gameObject.GetComponent<Rigidbody>();
+        rigid = GetComponent<Rigidbody>();     
     }
 
     void FixedUpdate()
     {
         if (canMove)
         {
-            if (!isRolling && !isFinished)
-            {
-                GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 10);
-            }
-            else if(isRolling && !isFinished)
-            {
-                GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 10);
-            }
-            else
-            {
-                GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);  // ileri hız bitiyor ama animasyon devam ediyor.
-            }
+            rigid.velocity = new Vector3(0, 0, 10);
+        }
 
-            if (canMove && isGrounded && !isRolling)
+        if (isGrounded && !isRolling)
+        {
+            if (Input.GetKey("a"))
             {
-                if (Input.GetKey("a"))
-                {
-                    GetComponent<Rigidbody>().AddForce(-950, 0, 0, ForceMode.Force);
-                }
-                else if (Input.GetKey("d"))
-                {
-                    GetComponent<Rigidbody>().AddForce(950, 0, 0, ForceMode.Force);
-                }
+                rigid.AddForce(-950, 0, 0, ForceMode.Force);
+            }
+            else if (Input.GetKey("d"))
+            {
+                rigid.AddForce(950, 0, 0, ForceMode.Force);
             }
         }
     }
@@ -58,7 +47,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, raycastDistance, groundLayer)) {
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, raycastDistance, groundLayer))
+        {
             isGrounded = true;
             animator.SetBool("IsJumping", false);
         }
@@ -84,9 +74,9 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator Roll()
     {
-        transform.localScale = new Vector3(0.2f, 0.2f, 0.2f); // karakteri yarı boyuta indir
-        yield return new WaitForSeconds(0.5f); // yarım saniye bekle
-        transform.localScale = new Vector3(0.25f, 0.25f, 0.25f); // karakteri eski haline getir
+        transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+        yield return new WaitForSeconds(0.5f);
+        transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
         isRolling = false;
     }
 
@@ -95,13 +85,10 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isJumping = false;
-            canMove = true;
-        }
-        else if (collision.gameObject.CompareTag("Finish"))
-        {
-            isFinished = true;
         }
     }
+
+
 
     void OnCollisionExit(Collision collision)
     {
@@ -113,7 +100,7 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "puan")
+        if (other.gameObject.CompareTag("puan"))
         {
             Destroy(other.gameObject);
         }

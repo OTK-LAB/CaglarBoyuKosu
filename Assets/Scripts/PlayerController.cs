@@ -97,12 +97,4 @@ public class PlayerController : MonoBehaviour
             Camera.main.GetComponent<CameraController>().enabled = true;
         }
     }
-
-    //void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject.CompareTag("puan"))
-    //    {
-    //        Destroy(other.gameObject);
-    //    }
-    //}
 }

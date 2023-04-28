@@ -9,6 +9,7 @@ public class PlayerHealth : MonoBehaviour
     public int currentHealth;
     public Slider healthBar;
     private GameManager gameManager;
+    public GameObject screen;
 
     // Start is called before the first frame update
     void Start()
@@ -50,10 +51,11 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     {
         gameObject.SetActive(false);
-
+        screen.SetActive(true);
         if (gameManager != null)
         {
             gameManager.GameOver();
         }
+        
     }
 }

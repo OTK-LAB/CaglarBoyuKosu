@@ -98,11 +98,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("puan"))
-        {
-            Destroy(other.gameObject);
-        }
-    }
+    //void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.CompareTag("puan"))
+    //    {
+    //        Destroy(other.gameObject);
+    //    }
+    //}
 }

@@ -4,19 +4,30 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameOverScreen gameOverScreenPrefab;
-    private GameOverScreen gameOverScreenInstance;
     private int maxPlatform = 0;
     private bool gameHasEnded = false;
+    public static GameManager instance;
+    public int newMax;
 
-    void Start()
+    private void Awake()
     {
+        instance = this;
+    }
 
+    private void Update()
+    {
+        SetMaxPlatform(newMax);
     }
 
     public void GameOver()
     {
         gameHasEnded = true;
-        gameOverScreenInstance.Setup(maxPlatform);
     }
+
+    public void SetMaxPlatform(int a)
+    {
+        maxPlatform = a;
+    }
+
 }
+

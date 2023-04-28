@@ -3,32 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameOverScreen : MonoBehaviour
 {
     public Text pointsText;
-    public int scoreNum;
+    private int scoreNum = 0;
+    public GameObject screen;
 
-    void start()
+
+    void Start()
     {
-        scoreNum = 0;
-        pointsText.text = scoreNum + " POINTS";
+        pointsText.text = $"Your score is {scoreNum}.";
+    }
+    void Update()
+    {
+        Setup(GameManager.instance.newMax);
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "puan")
         {
-            scoreNum += 10;
-            pointsText.text = scoreNum + " POINTS";
+            GameManager.instance.newMax += 10;
+            other.gameObject.SetActive(false);
         }
-
     }
 
     public void Setup(int score)
     {
+        scoreNum = score;
+        pointsText.text = $"Your score is {scoreNum}.";
         gameObject.SetActive(true);
-        pointsText.text = score.ToString() + " POINTS";
     }
 
     public void RestartButton()
@@ -47,4 +53,3 @@ public class GameOverScreen : MonoBehaviour
         Application.Quit();
     }
 }
-

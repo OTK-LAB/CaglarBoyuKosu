@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class FınıshLine : MonoBehaviour
 {
-    //public bool isFinished = false;
+    public bool isFinished = false;
 
     IEnumerator FreezeRotation(PlayerController player) //karakteri durduran kod
     {
@@ -18,6 +18,7 @@ public class FınıshLine : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            isFinished = true;
             PlayerController player = other.gameObject.GetComponent<PlayerController>();
             if (player != null)
             {

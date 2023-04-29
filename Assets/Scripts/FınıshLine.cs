@@ -5,8 +5,13 @@ using UnityEngine;
 
 public class FınıshLine : MonoBehaviour
 {
+    public static FınıshLine instance;
     public bool isFinished = false;
 
+    private void Awake()
+    {
+        instance = this;
+    }
     IEnumerator FreezeRotation(PlayerController player) //karakteri durduran kod
     {
         yield return new WaitForSeconds(5f);

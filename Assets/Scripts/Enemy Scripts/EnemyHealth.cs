@@ -10,12 +10,12 @@ public class EnemyHealth : MonoBehaviour
     public Slider healthBar;
     private GameManager gameManager;
     public bool isEnemydie = false;
-    private Enemy enemyScript;
+    public Enemy EnemyScript;
 
     // Start is called before the first frame update
     void Start()
     {
-        enemyScript = GetComponent<Enemy>();
+        EnemyScript = GetComponent<Enemy>();
 
         currentHealth = startingHealth;
         healthBar.maxValue = startingHealth;

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Fire : MonoBehaviour
 {
@@ -10,8 +11,14 @@ public class Fire : MonoBehaviour
     private float lastFireTime = 0f;
     private Transform enemyTransform;
     private bool isAttacking = false;
+    public static Fire instance;
 
     private Animator animator;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
@@ -23,48 +30,48 @@ public class Fire : MonoBehaviour
     {
         float distanceToEnemy = Vector3.Distance(transform.position, enemyTransform.position);
 
-        if (distanceToEnemy <= stopDistance && Input.GetMouseButton(0))
+        if (distanceToEnemy <= stopDistance && Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             FireProjectile();
         }
+
     }
 
     public void FireProjectile()
     {
-        float currentTime = Time.time;
+            float currentTime = Time.time;
 
-        // Saniyede bir kez ateş etme kontrolü
-        if (currentTime - lastFireTime < fireRate)
-        {
-            return;
-        }
+            // Saniyede bir kez ateş etme kontrolü
+            if (currentTime - lastFireTime < fireRate)
+            {
+                return;
+            }
 
-        // Envantterdeki mermi sayısını kontrol et
-        int ammoCount = PlayerInventory.instance.GetItemCount("ammo");
-        if (ammoCount <= 0)
-        {
-            Debug.Log("Mermin Bitti");
-            return;
-        }
+            // Envantterdeki mermi sayısını kontrol et
+            int ammoCount = PlayerInventory.instance.GetItemCount("ammo");
+            if (ammoCount <= 0)
+            {
+                Debug.Log("Mermin Bitti");
+                return;
+            }
 
-        // Mermi sayısını bir azalt
-        PlayerInventory.instance.RemoveItem("ammo", 1);
+            // Mermi sayısını bir azalt
+            PlayerInventory.instance.RemoveItem("ammo", 1);
 
-        lastFireTime = currentTime;
+            lastFireTime = currentTime;
 
-        isAttacking = true;
+            isAttacking = true;
 
-        Vector3 projectileDirection = transform.forward;
-        Quaternion projectileRotation = Quaternion.LookRotation(projectileDirection);
+            Vector3 projectileDirection = transform.forward;
+            Quaternion projectileRotation = Quaternion.LookRotation(projectileDirection);
 
-        GameObject projectile = Instantiate(bulletPrefab, bulletSpawnPoint.position, projectileRotation);
-        Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
+            GameObject projectile = Instantiate(bulletPrefab, bulletSpawnPoint.position, projectileRotation);
+            Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
 
-        projectileRb.velocity = projectileDirection * bulletSpeed;
+            projectileRb.velocity = projectileDirection * bulletSpeed;
 
-        // Nesneyi 3 saniye sonra yok et
-        Destroy(projectile, 3f);
+            // Nesneyi 3 saniye sonra yok et
+            Destroy(projectile, 3f);
     }
-
 
 }

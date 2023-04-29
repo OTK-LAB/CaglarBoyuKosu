@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public bool isFinished;
 
     public bool canMove = true;
+    public float moveSpeed = 12f;
 
     public void Start()
     {
@@ -28,19 +29,8 @@ public class PlayerController : MonoBehaviour
     {
         if (canMove)
         {
-            rigid.velocity = new Vector3(0, 0, 10);
-        }
-
-        if (isGrounded && !isRolling)
-        {
-            if (Input.GetKey("a"))
-            {
-                rigid.AddForce(-950, 0, 0, ForceMode.Force);
-            }
-            else if (Input.GetKey("d"))
-            {
-                rigid.AddForce(950, 0, 0, ForceMode.Force);
-            }
+            float horizontalInput = Input.GetAxisRaw("Horizontal");
+            rigid.velocity = new Vector3(horizontalInput * moveSpeed, 0, 10);
         }
     }
 
@@ -62,7 +52,7 @@ public class PlayerController : MonoBehaviour
         {
             rigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isJumping = true;
-            Camera.main.GetComponent<CameraController>().StopFollowingPlayer();
+            //Camera.main.GetComponent<CameraController>().StopFollowingPlayer();
         }
 
         if (Input.GetKeyDown(KeyCode.S) && !isRolling)
@@ -88,13 +78,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
-
-    void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Ground") && !isJumping)
-        {
-            Camera.main.GetComponent<CameraController>().enabled = true;
-        }
-    }
+    //void OnCollisionExit(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Ground") && !isJumping)
+    //    {
+    //        Camera.main.GetComponent<CameraController>().enabled = true;
+    //    }
+    //}
 }

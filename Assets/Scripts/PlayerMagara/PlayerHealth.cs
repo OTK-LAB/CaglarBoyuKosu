@@ -5,11 +5,17 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public static PlayerHealth instance;
     public int startingHealth = 100;
     public int currentHealth;
     public Slider healthBar;
     private GameManager gameManager;
     public GameObject screen;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +33,13 @@ public class PlayerHealth : MonoBehaviour
     {
         
     }
+
+    public void Heal(int amount)
+    {
+        currentHealth = Mathf.Min(currentHealth + amount, startingHealth);
+        healthBar.value = currentHealth;
+    }
+
 
     void OnTriggerEnter(Collider other)
     {

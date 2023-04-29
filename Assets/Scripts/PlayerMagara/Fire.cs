@@ -39,6 +39,17 @@ public class Fire : MonoBehaviour
             return;
         }
 
+        // Envantterdeki mermi sayısını kontrol et
+        int ammoCount = PlayerInventory.instance.GetItemCount("ammo");
+        if (ammoCount <= 0)
+        {
+            Debug.Log("Mermin Bitti");
+            return;
+        }
+
+        // Mermi sayısını bir azalt
+        PlayerInventory.instance.RemoveItem("ammo", 1);
+
         lastFireTime = currentTime;
 
         isAttacking = true;
@@ -54,5 +65,6 @@ public class Fire : MonoBehaviour
         // Nesneyi 3 saniye sonra yok et
         Destroy(projectile, 3f);
     }
+
 
 }

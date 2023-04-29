@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
     public float raycastDistance = 0.6f;
 
-    private bool isGrounded;
+    public bool isGrounded;
     private bool isJumping;
     private bool isRolling;
     public bool isFinished;

@@ -36,14 +36,14 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.W) && isGrounded && !isRolling)
         {
             animator.SetBool("IsJumping", true);
             isGrounded = false;
             StartCoroutine(Jump());
         }
 
-        if (Input.GetKeyDown(KeyCode.S) && !isRolling)
+        if (Input.GetKeyDown(KeyCode.S) && !isRolling && isGrounded)
         {
             animator.SetBool("IsRolling", true);
             isRolling = true;

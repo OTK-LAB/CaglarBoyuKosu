@@ -30,5 +30,4 @@ public class LevelController : MonoBehaviour
             screen.SetActive(true);
         }
     }
-
 }

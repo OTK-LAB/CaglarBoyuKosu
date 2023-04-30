@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private int maxPlatform = 0;
-    private bool gameHasEnded = false;
+    //private bool gameHasEnded = false;
     public static GameManager instance;
     public int newMax;
 
@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        gameHasEnded = true;
+        //gameHasEnded = true;
     }
 
     public void SetMaxPlatform(int a)

@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
         if (canMove)
         {
             float horizontalInput = Input.GetAxisRaw("Horizontal");
-            rigid.velocity = new Vector3(horizontalInput * moveSpeed, 0, 10);
+            rigid.velocity = new Vector3(horizontalInput * moveSpeed, 0, 20);
         }
     }
 

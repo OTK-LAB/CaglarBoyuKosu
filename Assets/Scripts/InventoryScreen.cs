@@ -39,7 +39,7 @@ public class InventoryScreen : MonoBehaviour
 
     void Aktif()
     {
-        Invoke(nameof(ActivateButton), 4.5f);
+        Invoke(nameof(ActivateButton), 2f);
     }
 
     void ActivateButton()

@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
         {
             
             isAttacking = true;           
-            InvokeRepeating("FireProjectile", 0f, fireRate);
+            InvokeRepeating(nameof(FireProjectile), 0f, fireRate);
         }
 
         if (isAttacking == true)
@@ -56,7 +56,7 @@ public class Enemy : MonoBehaviour
         GameObject projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileRotation);
         Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
 
-        projectileRb.velocity = projectileDirection * projectileSpeed;
+        projectileRb.velocity = (projectileDirection * projectileSpeed) * 1.5f;
 
         // Nesneyi 3 saniye sonra yok et
         Destroy(projectile, 3f);
@@ -67,7 +67,7 @@ public class Enemy : MonoBehaviour
         if(die==true)
         {
             gameObject.SetActive(false);
-            CancelInvoke("FireProjectile");
+            CancelInvoke(nameof(FireProjectile));
         }
     }
 

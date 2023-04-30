@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
     public Slider healthBar;
     private GameManager gameManager;
     public GameObject screen;
+    public bool PlayerDied=false;
 
     private void Awake()
     {
@@ -45,6 +46,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Bullet"))
         {
+            other.gameObject.SetActive(false);
             TakeDamage(10);
             Debug.Log("Oyuncu vuruldu");
         }
@@ -63,6 +65,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Die()
     {
+        PlayerDied = true;
         gameObject.SetActive(false);
         screen.SetActive(true);
         if (gameManager != null)

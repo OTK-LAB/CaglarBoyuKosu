@@ -5,84 +5,86 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Animator animator;
-    public float jumpForce = 7f;
     public Rigidbody rigid;
 
-    public LayerMask groundLayer;
-    public float raycastDistance = 0.6f;
+    [SerializeField] private float moveSpeed = 12f;
+    [SerializeField] private float jumpForce = 50f;
+    [SerializeField] private float rollScaleFactor = 0.2f;
+    [SerializeField] private float rollDuration = 0.85f;
 
-    public bool isGrounded;
-    private bool isJumping;
+    private bool isGrounded;
     private bool isRolling;
-    public bool isFinished;
+    private bool isFinished;
 
     public bool canMove = true;
-    public float moveSpeed = 12f;
 
-    public void Start()
+    private void Awake()
     {
         animator = GetComponent<Animator>();
-        rigid = GetComponent<Rigidbody>();     
+        rigid = GetComponent<Rigidbody>();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         if (canMove)
         {
             float horizontalInput = Input.GetAxisRaw("Horizontal");
-            rigid.velocity = new Vector3(horizontalInput * moveSpeed, 0, 20);
+            Vector3 movement = new Vector3(horizontalInput * moveSpeed, rigid.velocity.y, 20);
+            rigid.velocity = movement;
         }
     }
 
-    void Update()
+    private void Update()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, raycastDistance, groundLayer))
-        {
-            isGrounded = true;
-            animator.SetBool("IsJumping", false);
-        }
-        else
-        {
-            isGrounded = false;
-            animator.SetBool("IsJumping", true);
-        }
-
         if (Input.GetKeyDown(KeyCode.W) && isGrounded)
         {
-            rigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            isJumping = true;
-            //Camera.main.GetComponent<CameraController>().StopFollowingPlayer();
+            animator.SetBool("IsJumping", true);
+            isGrounded = false;
+            StartCoroutine(Jump());
         }
 
         if (Input.GetKeyDown(KeyCode.S) && !isRolling)
         {
+            animator.SetBool("IsRolling", true);
             isRolling = true;
             StartCoroutine(Roll());
         }
     }
 
-    IEnumerator Roll()
+    private IEnumerator Jump()
     {
-        transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+        // Yerçekimini geçici olarak azalt
+        rigid.useGravity = false;
+        Vector3 jumpVelocity = Vector3.up * jumpForce;
+        rigid.velocity += jumpVelocity;
+
         yield return new WaitForSeconds(0.5f);
+
+        Vector3 downVelocity = Vector3.down * 2f * jumpForce;
+        rigid.velocity += downVelocity;
+
+        yield return new WaitForSeconds(0.5f);
+
+        // Yerçekimini tekrar etkinleþtir
+        rigid.useGravity = true;
+        animator.SetBool("IsJumping", false);
+    }
+
+
+    private IEnumerator Roll()
+    {
+        transform.localScale = new Vector3(rollScaleFactor, rollScaleFactor, rollScaleFactor);
+        yield return new WaitForSeconds(rollDuration);
         transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
+        animator.SetBool("IsRolling", false);
         isRolling = false;
     }
 
-    void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            isJumping = false;
+            isGrounded = true;
         }
     }
-
-    //void OnCollisionExit(Collision collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Ground") && !isJumping)
-    //    {
-    //        Camera.main.GetComponent<CameraController>().enabled = true;
-    //    }
-    //}
 }

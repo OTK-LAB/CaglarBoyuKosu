@@ -69,6 +69,13 @@ public class Enemy : MonoBehaviour
             gameObject.SetActive(false);
             CancelInvoke(nameof(FireProjectile));
         }
+
+        if(PlayerHealth.instance.PlayerDied == true)
+        {
+            isAttacking = false;
+            CancelInvoke(nameof(FireProjectile));
+            animator.SetBool("IsThrowing", false);
+        }
     }
 
 }

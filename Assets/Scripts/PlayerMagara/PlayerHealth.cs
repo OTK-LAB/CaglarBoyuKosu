@@ -66,7 +66,7 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     {
         PlayerDied = true;
-        BossController.instance.Attack = false;
+        //BossController.instance.Attack = false;
         gameObject.SetActive(false);
         screen.SetActive(true);
         if (gameManager != null)

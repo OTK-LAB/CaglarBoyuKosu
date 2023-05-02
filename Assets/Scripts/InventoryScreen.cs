@@ -19,7 +19,7 @@ public class InventoryScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        finish = FýnýshLine.instance.isFinished;
+        finish = FÄ±nÄ±shLine.instance.isFinished;
         if (finish)
         {
             Aktif();

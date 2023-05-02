@@ -6,14 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour
 {
-    private FýnýshLine finish;
+    private FÄ±nÄ±shLine finish;
     private EnemyHealth enemy;
     public GameObject screen;
     public PlayerController playerController;
 
     private void Start()
     {
-        finish = FindObjectOfType<FýnýshLine>();
+        finish = FindObjectOfType<FÄ±nÄ±shLine>();
         enemy = FindObjectOfType<EnemyHealth>();
         playerController = FindObjectOfType<PlayerController>();
     }

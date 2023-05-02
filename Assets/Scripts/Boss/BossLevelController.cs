@@ -6,14 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class BossLevelController : MonoBehaviour
 {
-    private FýnýshLine finish;
+    private FÄ±nÄ±shLine finish;
     private BossController boss;
     public GameObject screen;
     public PlayerController playerController;
 
     private void Start()
     {
-        finish = FindObjectOfType<FýnýshLine>();
+        finish = FindObjectOfType<FÄ±nÄ±shLine>();
         boss = FindObjectOfType<BossController>();
         playerController = FindObjectOfType<PlayerController>();
     }

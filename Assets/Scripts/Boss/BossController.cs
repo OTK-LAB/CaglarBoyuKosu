@@ -12,7 +12,9 @@ public class BossController : MonoBehaviour
     private float targetX; // hedef x pozisyonu
     public float attackDistance = 65f;
     public float lowHealthThreshold = 50f;
-    public GameObject bulletPrefab;
+    public GameObject normalBulletPrefab;
+    public GameObject fastBulletPrefab;
+    public GameObject powerfulBulletPrefab;
     public float projectileSpeed = 100f;
     public Transform projectileSpawnPoint;
     public float projectileFireRate = 1f;
@@ -24,9 +26,15 @@ public class BossController : MonoBehaviour
     private float currentHealth;
     private float startingHealth = 200f;
     public bool isBossDied = false;
-    private float Hiz = 1f;
 
     public static BossController instance;
+
+    public enum FireMode
+    {
+        Normal,
+        Fast,
+        Powerful
+    }
 
     private void Awake()
     {
@@ -67,8 +75,9 @@ public class BossController : MonoBehaviour
             {
                 if(projectileFireRate <= timeSinceLastAttack)
                 {
+                    FireMode selectedFireMode = SelectFireMode();
                     Attack = true;
-                    FireProjectile();
+                    FireProjectile(selectedFireMode);
                     timeSinceLastAttack = 0f;
                 }
                 
@@ -84,10 +93,6 @@ public class BossController : MonoBehaviour
             animator.SetBool("isAttacking", false);
         }
 
-        if (currentHealth <= lowHealthThreshold)
-        {
-            Change();
-        }
      }
 
     IEnumerator ResetBoolAfterDelay(float delayTime)
@@ -96,27 +101,72 @@ public class BossController : MonoBehaviour
         Attack = false;
     }
 
-    public void FireProjectile()
+    private FireMode SelectFireMode()
     {
-        Vector3 projectileDirection = (player.position - projectileSpawnPoint.position);
-        projectileDirection.y += 1f; // y eksenine +1 ekleniyor
-        projectileDirection = projectileDirection.normalized;
-
-        Quaternion projectileRotation = Quaternion.LookRotation(projectileDirection);
-
-        GameObject projectile = Instantiate(bulletPrefab, projectileSpawnPoint.position, projectileRotation);
-
-        Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
-        projectileRb.velocity = (projectileDirection * projectileSpeed) * Hiz;
-        timeSinceLastAttack = 0f;
-        Destroy(projectile, 4f);
+        int randomValue = Random.Range(0, 3);
+        return (FireMode)randomValue;
     }
 
-    private void Change()
+    public void FireProjectile(FireMode fireMode)
     {
-        projectileFireRate = 0.5f;
-        Hiz = 1.5f;
+      
+        switch (fireMode)
+        {
+            case FireMode.Normal:
+                // Normal ateþ etme modu kodlarý
+                Vector3 projectileDirectionNormal = (player.position - projectileSpawnPoint.position);
+                projectileDirectionNormal.y += 1f; // y eksenine +1 ekleniyor
+                projectileDirectionNormal = projectileDirectionNormal.normalized;
+
+                Quaternion projectileRotationNormal = Quaternion.LookRotation(projectileDirectionNormal);
+
+                GameObject projectileNormal = Instantiate(normalBulletPrefab, projectileSpawnPoint.position, projectileRotationNormal);
+
+                Rigidbody projectileRbNormal = projectileNormal.GetComponent<Rigidbody>();
+                projectileRbNormal.velocity = (projectileDirectionNormal * projectileSpeed) * 1.5f;
+
+                // Normal ateþ etme moduna özgü ek kodlar...
+
+                Destroy(projectileNormal, 4f);
+                break;
+
+            case FireMode.Fast:
+                // Hýzlý ateþ etme modu kodlarý
+                Vector3 projectileDirectionFast = (player.position - projectileSpawnPoint.position);
+                projectileDirectionFast.y += 1.5f; // y eksenine +1.5 ekleniyor
+                projectileDirectionFast = projectileDirectionFast.normalized;
+
+                Quaternion projectileRotationFast = Quaternion.LookRotation(projectileDirectionFast);
+                GameObject projectileFast = Instantiate(fastBulletPrefab, projectileSpawnPoint.position, projectileRotationFast);
+
+                Rigidbody projectileRbFast = projectileFast.GetComponent<Rigidbody>();
+                projectileRbFast.velocity = (projectileDirectionFast * projectileSpeed) * 3f;
+
+                // Hýzlý ateþ etme moduna özgü ek kodlar...
+
+                Destroy(projectileFast, 4f);
+                break;
+
+            case FireMode.Powerful:
+                // Güçlü ateþ etme modu kodlarý
+                Vector3 projectileDirectionPowerful = (player.position - projectileSpawnPoint.position);
+                projectileDirectionPowerful.y += 1f; // y eksenine +1 ekleniyor
+                projectileDirectionPowerful = projectileDirectionPowerful.normalized;
+
+                Quaternion projectileRotationPowerful = Quaternion.LookRotation(projectileDirectionPowerful);
+                GameObject projectilePowerful = Instantiate(powerfulBulletPrefab, projectileSpawnPoint.position, projectileRotationPowerful);
+
+                Rigidbody projectileRbPowerful = projectilePowerful.GetComponent<Rigidbody>();
+                projectileRbPowerful.velocity = (projectileDirectionPowerful * projectileSpeed) * 1f;
+
+                // Güçlü ateþ etme moduna özgü ek kodlar...
+
+                Destroy(projectilePowerful, 4f);
+                break;
+        }
+
     }
+
 
     private void OnTriggerEnter(Collider other)
     {

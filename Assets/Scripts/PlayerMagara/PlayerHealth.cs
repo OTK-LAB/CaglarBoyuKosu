@@ -44,10 +44,24 @@ public class PlayerHealth : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Bullet"))
+        if (other.gameObject.CompareTag("NormalBullet"))
         {
             other.gameObject.SetActive(false);
             TakeDamage(10);
+            Debug.Log("Oyuncu vuruldu");
+        }
+
+        if (other.gameObject.CompareTag("FastBullet"))
+        {
+            other.gameObject.SetActive(false);
+            TakeDamage(5);
+            Debug.Log("Oyuncu vuruldu");
+        }
+
+        if (other.gameObject.CompareTag("PowerfulBullet"))
+        {
+            other.gameObject.SetActive(false);
+            TakeDamage(20);
             Debug.Log("Oyuncu vuruldu");
         }
     }

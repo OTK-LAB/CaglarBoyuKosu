@@ -3101,7 +3101,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1, y: -10.299988}
+  m_AnchoredPosition: {x: -1, y: -10.300049}
   m_SizeDelta: {x: 106, y: 137.00574}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1473786440
@@ -4777,6 +4777,18 @@ PrefabInstance:
       propertyPath: bulletPrefab
       value: 
       objectReference: {fileID: 7354999282791336263, guid: 6238ad5095eeaec408f9a6671d600340, type: 3}
+    - target: {fileID: 2152534318522023166, guid: fb1884c5e91cb7c478dd897d8258db3a, type: 3}
+      propertyPath: fastBulletPrefab
+      value: 
+      objectReference: {fileID: 9134429859740475449, guid: 94ab3c9aae910ab449946b35a783c7dc, type: 3}
+    - target: {fileID: 2152534318522023166, guid: fb1884c5e91cb7c478dd897d8258db3a, type: 3}
+      propertyPath: normalBulletPrefab
+      value: 
+      objectReference: {fileID: 924609993198522519, guid: 6238ad5095eeaec408f9a6671d600340, type: 3}
+    - target: {fileID: 2152534318522023166, guid: fb1884c5e91cb7c478dd897d8258db3a, type: 3}
+      propertyPath: powerfulBulletPrefab
+      value: 
+      objectReference: {fileID: 3646052263638324633, guid: 3a95564818f0eb1479333d651fb91631, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb1884c5e91cb7c478dd897d8258db3a, type: 3}
 --- !u!1001 &2982225115791194716

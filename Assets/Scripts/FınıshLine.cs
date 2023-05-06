@@ -15,6 +15,7 @@ public class FınıshLine : MonoBehaviour
     IEnumerator FreezeRotation(PlayerController player) //karakteri durduran kod
     {
         yield return new WaitForSeconds(2f);
+        isFinished = true;
         player.rigid.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionZ;
     }
 
@@ -23,7 +24,6 @@ public class FınıshLine : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            isFinished = true;
             PlayerController player = other.gameObject.GetComponent<PlayerController>();
             if (player != null)
             {

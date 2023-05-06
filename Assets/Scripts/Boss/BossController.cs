@@ -133,7 +133,7 @@ public class BossController : MonoBehaviour
             case FireMode.Fast:
                 // Hýzlý ateþ etme modu kodlarý
                 Vector3 projectileDirectionFast = (player.position - projectileSpawnPoint.position);
-                projectileDirectionFast.y += 1.5f; // y eksenine +1.5 ekleniyor
+                projectileDirectionFast.y += 1f; // y eksenine +1.5 ekleniyor
                 projectileDirectionFast = projectileDirectionFast.normalized;
 
                 Quaternion projectileRotationFast = Quaternion.LookRotation(projectileDirectionFast);

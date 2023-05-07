@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 7168170061755671236}
   - component: {fileID: 6112984638555581793}
   - component: {fileID: 8300512817163180459}
+  - component: {fileID: 811480358205646622}
   m_Layer: 0
   m_Name: kozalak
-  m_TagString: Untagged
+  m_TagString: food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 7507962501858408574}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1430.233, y: 1430.233, z: 1430.233}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2000, y: 2000, z: 2000}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &811480358205646622
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7507962501858408574}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00078152085, y: 0.00077719754, z: 0.0008733034}
+  m_Center: {x: -0.000052928357, y: 0.000022136006, z: 0.00043996493}

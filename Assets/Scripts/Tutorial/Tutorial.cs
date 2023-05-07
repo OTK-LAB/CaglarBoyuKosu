@@ -42,6 +42,20 @@ public class Tutorial : MonoBehaviour
                     return true;
                 }
                 break;
+
+            case 2:
+                if (FýnýshLine.instance.isFinished == true)
+                {
+                    return true;
+                }
+                break;
+
+            case 3:
+                if (FýnýshLine.instance.isFinished == true)
+                {
+                    return true;
+                }
+                break;
         }
 
         return false;

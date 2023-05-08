@@ -18,7 +18,7 @@ public class GameOverScreen : MonoBehaviour
     }
     void Update()
     {
-        //Setup(GameManager.instance.newMax);
+        Setup(GameManager.instance.newMax);
     }
 
     void OnTriggerEnter(Collider other)

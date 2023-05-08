@@ -1,9 +1,24 @@
 fileFormatVersion: 2
-guid: 632c2572e782686499c29515fd29c3e4
+guid: 8abc09ef1e6fbf14bb08d7efac730c4a
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ice Imperfections
+    second: {fileID: 2100000, guid: 76c7368d26509c549b6d156ed52404b3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ice Rock
+    second: {fileID: 2100000, guid: 76c7368d26509c549b6d156ed52404b3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Procedural Cycles Ice
+    second: {fileID: 2100000, guid: 76c7368d26509c549b6d156ed52404b3, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

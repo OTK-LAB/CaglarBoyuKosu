@@ -14,6 +14,14 @@ public class RollingArea : MonoBehaviour
         instance = this;
     }
 
+    void Update()
+    {
+        if (PlayerHealth.instance.PlayerDied == true || PlayerCollison.instance.GameOver == true)
+        {
+            expText.gameObject.SetActive(false);
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))

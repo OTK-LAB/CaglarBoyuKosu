@@ -3,27 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WalkingArea : MonoBehaviour
+public class ObstacleArea : MonoBehaviour
 {
-    public static WalkingArea instance;
-    public bool isWalkingArea;
+    public static ObstacleArea instance;
+    public bool isObstacleArea;
     public Text expText;
 
     private void Awake()
     {
         instance = this;
     }
+
     void Update()
     {
-        if (PlayerHealth.instance.PlayerDied == true || PlayerCollison.instance.GameOver == true)
+        if(PlayerHealth.instance.PlayerDied == true || PlayerCollison.instance.GameOver == true)
         {
             expText.gameObject.SetActive(false);
         }
-    }
-
-    void Start()
-    {
-        isWalkingArea = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -31,7 +27,7 @@ public class WalkingArea : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             expText.gameObject.SetActive(true);
-            isWalkingArea = true;
+            isObstacleArea = true;
         }
     }
 
@@ -40,7 +36,7 @@ public class WalkingArea : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             expText.gameObject.SetActive(false);
-            isWalkingArea = false;
+            isObstacleArea = false;
         }
     }
 }

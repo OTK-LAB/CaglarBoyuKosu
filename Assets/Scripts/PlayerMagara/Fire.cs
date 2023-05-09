@@ -13,8 +13,8 @@ public class Fire : MonoBehaviour
     private Transform bossTransform;
     //private bool isAttacking = false;
     public static Fire instance;
-    private float distanceToEnemy;
-    private float distanceToBoss;
+    //private float distanceToEnemy;
+    //private float distanceToBoss;
     private Animator animator;
 
     private void Awake()
@@ -32,23 +32,23 @@ public class Fire : MonoBehaviour
 
     void Update()
     {
-        if(enemyTransform != null)
-        {
-            distanceToEnemy = Vector3.Distance(transform.position, enemyTransform.position);
-        }
+        //if(enemyTransform != null)
+        //{
+        //    distanceToEnemy = Vector3.Distance(transform.position, enemyTransform.position);
+        //}
         
-        if(bossTransform != null)
-        {
-            distanceToBoss = Vector3.Distance(transform.position, bossTransform.position);
-        }
+        //if(bossTransform != null)
+        //{
+        //    distanceToBoss = Vector3.Distance(transform.position, bossTransform.position);
+        //}
         
 
-        if (enemyTransform != null && distanceToEnemy <= stopDistance && Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject())
+        if (enemyTransform != null && FınıshLine.instance.isFinished == true && Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             FireProjectile();
         }
 
-        if (bossTransform != null && distanceToBoss <= stopDistance && Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject())
+        if (bossTransform != null && FınıshLine.instance.isFinished == true && Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             FireProjectile();
         }

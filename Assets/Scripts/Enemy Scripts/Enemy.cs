@@ -23,9 +23,9 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         die = healthScript.isEnemydie;
-        float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
+        //float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
 
-        if (distanceToPlayer <= stopDistance && !isAttacking)
+        if (FýnýshLine.instance.isFinished == true && !isAttacking)
         {
             
             isAttacking = true;           

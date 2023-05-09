@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WalkingArea : MonoBehaviour
+public class AmmoArea : MonoBehaviour
 {
-    public static WalkingArea instance;
-    public bool isWalkingArea;
+    public static AmmoArea instance;
+    public bool isAmmoArea;
     public Text expText;
 
     private void Awake()
     {
         instance = this;
     }
+
     void Update()
     {
         if (PlayerHealth.instance.PlayerDied == true || PlayerCollison.instance.GameOver == true)
@@ -21,17 +22,12 @@ public class WalkingArea : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        isWalkingArea = true;
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             expText.gameObject.SetActive(true);
-            isWalkingArea = true;
+            isAmmoArea = true;
         }
     }
 
@@ -40,7 +36,7 @@ public class WalkingArea : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             expText.gameObject.SetActive(false);
-            isWalkingArea = false;
+            isAmmoArea = false;
         }
     }
 }

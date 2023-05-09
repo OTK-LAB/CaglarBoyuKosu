@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rigid;
 
     [SerializeField] private float moveSpeed = 12f;
-    [SerializeField] private float jumpForce = 50f;
+    [SerializeField] private float jumpForce = 12f;
     [SerializeField] private float rollScaleFactor = 0.2f;
     [SerializeField] private float rollDuration = 0.85f;
 

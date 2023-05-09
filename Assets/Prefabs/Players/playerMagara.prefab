@@ -1388,6 +1388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 2383768693284541206}
   screen: {fileID: 0}
+  GameOver: 0
 --- !u!114 &1929051840124501712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1448,7 +1449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37ce2cb51aded0a468d02265a2965b99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoCount: 100
+  ammoCount: 0
   foodCount: 0
   goldCount: 0
 --- !u!114 &2383768693284541206
@@ -1465,7 +1466,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigid: {fileID: 1929051840124501718}
   moveSpeed: 12
-  jumpForce: 10
+  jumpForce: 12
   rollScaleFactor: 0.2
   rollDuration: 0.85
   canMove: 1

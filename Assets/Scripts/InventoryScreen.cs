@@ -51,12 +51,15 @@ public class InventoryScreen : MonoBehaviour
     public void OnHealButtonClick()
     {
         int foodCount = PlayerInventory.instance.GetItemCount("food");
+        int currentHealth = PlayerHealth.instance.currentHealth;
+        int startingHealth = PlayerHealth.instance.startingHealth;
 
-        if (foodCount > 0)
+        if (currentHealth < startingHealth && foodCount > 0)
         {
             PlayerHealth.instance.Heal(10);
             PlayerInventory.instance.RemoveItem("food", 1);
             UpdateItemCountUI();
         }
     }
+
 }

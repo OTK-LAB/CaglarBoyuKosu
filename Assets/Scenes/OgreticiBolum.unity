@@ -2038,6 +2038,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8720133857911830748, guid: 10b11a52eb9174a46b97339bdd8823dd, type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8720133857911830748, guid: 10b11a52eb9174a46b97339bdd8823dd, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8720133857911830748, guid: 10b11a52eb9174a46b97339bdd8823dd, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 8720133857911830748, guid: 10b11a52eb9174a46b97339bdd8823dd, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 800
+      objectReference: {fileID: 0}
     - target: {fileID: 8720133857911830750, guid: 10b11a52eb9174a46b97339bdd8823dd, type: 3}
       propertyPath: m_Name
       value: HealtBars
@@ -8620,8 +8636,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Mouse1 ile ATE\u015E ET! \nSa\u011Fa Sola kayarak Ate\u015Ften Ka\xE7!\nEnvanterine
-    D\u0130KKAT ET!"
+  m_Text: "Mouse1 ile ATE\u015E ET! \nSa\u011Fa Sola kayarak Ate\u015Ften Ka\xE7!\nCan\u0131n
+    azald\u0131\u011F\u0131nda Can potunu Kullan!\nEnvanterine D\u0130KKAT ET!"
 --- !u!222 &1739652552
 CanvasRenderer:
   m_ObjectHideFlags: 0

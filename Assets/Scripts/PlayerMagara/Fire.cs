@@ -15,7 +15,7 @@ public class Fire : MonoBehaviour
     public static Fire instance;
     //private float distanceToEnemy;
     //private float distanceToBoss;
-    private Animator animator;
+    //private Animator animator;
 
     private void Awake()
     {
@@ -67,9 +67,9 @@ public class Fire : MonoBehaviour
 
 
     public void FireProjectile()
-    {
+    {   
             float currentTime = Time.time;
-
+            
             // Saniyede bir kez ateş etme kontrolü
             if (currentTime - lastFireTime < fireRate)
             {

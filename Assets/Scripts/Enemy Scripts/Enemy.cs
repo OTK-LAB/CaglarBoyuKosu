@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     private Animator animator;
     private EnemyHealth healthScript;
     private bool die = false;
+    public AudioSource fire;
 
     void Start()
     {
@@ -48,6 +49,7 @@ public class Enemy : MonoBehaviour
     public void FireProjectile()
     {
         isAttacking = true;
+        fire.Play();
         Vector3 projectileDirection = (playerTransform.position - projectileSpawnPoint.position);
         projectileDirection.y = 0f; // y ekseni bileþenini sýfýrla
         projectileDirection = projectileDirection.normalized; // yeniden normalize et

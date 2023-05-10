@@ -11,7 +11,7 @@ public class EnemyHealth : MonoBehaviour
     private GameManager gameManager;
     public bool isEnemydie = false;
     public Enemy EnemyScript;
-
+    public AudioSource hit;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +33,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (other.gameObject.CompareTag("kursun"))
         {
+            hit.Play();
             TakeDamage(10);
             Debug.Log("düþman vuruldu");
         }

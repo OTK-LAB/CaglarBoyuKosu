@@ -12,7 +12,7 @@ public class PlayerHealth : MonoBehaviour
     private GameManager gameManager;
     public GameObject screen;
     public bool PlayerDied=false;
-
+    [SerializeField] AudioSource GetHitSound;
     private void Awake()
     {
         instance = this;
@@ -47,6 +47,7 @@ public class PlayerHealth : MonoBehaviour
         if (other.gameObject.CompareTag("NormalBullet"))
         {
             other.gameObject.SetActive(false);
+            GetHitSound.Play();
             TakeDamage(10);
             Debug.Log("Oyuncu vuruldu");
         }
@@ -54,6 +55,7 @@ public class PlayerHealth : MonoBehaviour
         if (other.gameObject.CompareTag("FastBullet"))
         {
             other.gameObject.SetActive(false);
+            GetHitSound.Play();
             TakeDamage(5);
             Debug.Log("Oyuncu vuruldu");
         }
@@ -61,6 +63,7 @@ public class PlayerHealth : MonoBehaviour
         if (other.gameObject.CompareTag("PowerfulBullet"))
         {
             other.gameObject.SetActive(false);
+            GetHitSound.Play();
             TakeDamage(20);
             Debug.Log("Oyuncu vuruldu");
         }

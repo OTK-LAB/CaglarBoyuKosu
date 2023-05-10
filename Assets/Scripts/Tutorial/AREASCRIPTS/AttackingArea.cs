@@ -8,15 +8,21 @@ public class AttackingArea : MonoBehaviour
     public static AttackingArea instance;
     public bool isAttackingArea;
     public Text expText;
+    public EnemyHealth Enemy;
 
     private void Awake()
     {
         instance = this;
     }
 
+    void Start()
+    {
+        Enemy = FindObjectOfType<EnemyHealth>();
+    }
+
     void Update()
     {
-        if (PlayerHealth.instance.PlayerDied == true || PlayerCollison.instance.GameOver == true)
+        if (PlayerHealth.instance.PlayerDied == true || PlayerCollison.instance.GameOver == true || Enemy.isEnemydie)
         {
             expText.gameObject.SetActive(false);
         }

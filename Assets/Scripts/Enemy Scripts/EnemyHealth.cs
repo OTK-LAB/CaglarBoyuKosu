@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -12,11 +14,15 @@ public class EnemyHealth : MonoBehaviour
     public bool isEnemydie = false;
     public Enemy EnemyScript;
     public AudioSource hit;
+    public SaveSystem ss;
+
+    public string Level1 { get; private set; }
+
     // Start is called before the first frame update
     void Start()
     {
         EnemyScript = GetComponent<Enemy>();
-
+        ss = GetComponent<SaveSystem>();
         currentHealth = startingHealth;
         healthBar.maxValue = startingHealth;
         healthBar.value = startingHealth;
@@ -35,7 +41,7 @@ public class EnemyHealth : MonoBehaviour
         {
             hit.Play();
             TakeDamage(10);
-            Debug.Log("düþman vuruldu");
+            Debug.Log("dï¿½ï¿½man vuruldu");
         }
     }
 
@@ -53,6 +59,6 @@ public class EnemyHealth : MonoBehaviour
     void Die()
     {   
         isEnemydie = true;
-
+        ss.SaveLevel(ss.currentLevel);
     }
 }

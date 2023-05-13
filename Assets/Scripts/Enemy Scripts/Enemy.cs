@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
         die = healthScript.isEnemydie;
         //float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
 
-        if (FýnýshLine.instance.isFinished == true && !isAttacking)
+        if (FÄ±nÄ±shLine.instance.isFinished == true && !isAttacking)
         {
             
             isAttacking = true;           
@@ -51,7 +51,7 @@ public class Enemy : MonoBehaviour
         isAttacking = true;
         fire.Play();
         Vector3 projectileDirection = (playerTransform.position - projectileSpawnPoint.position);
-        projectileDirection.y = 0f; // y ekseni bileþenini sýfýrla
+        projectileDirection.y = 0f; // y ekseni bileï¿½enini sï¿½fï¿½rla
         projectileDirection = projectileDirection.normalized; // yeniden normalize et
         Quaternion projectileRotation = Quaternion.LookRotation(projectileDirection);
 

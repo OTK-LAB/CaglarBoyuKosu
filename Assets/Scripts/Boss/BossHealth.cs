@@ -11,6 +11,7 @@ public class BossHealth : MonoBehaviour
     private GameManager gameManager;
     public bool isBossDied = false;
     public BossController bossController;
+    public AudioSource hit;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,7 @@ public class BossHealth : MonoBehaviour
     {
         if (other.gameObject.CompareTag("kursun"))
         {
+            hit.Play();
             TakeDamage(10);
             Debug.Log("Boss vuruldu");
         }

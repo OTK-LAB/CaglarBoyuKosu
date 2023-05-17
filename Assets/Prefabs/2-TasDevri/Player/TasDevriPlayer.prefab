@@ -2954,9 +2954,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 814098841502768090, guid: ba5bf2c9c5e72a44a9c116950a9dd097, type: 3}
   bulletSpawnPoint: {fileID: 76199453059438405}
-  bulletSpeed: 0
-  fireRate: 0
-  stopDistance: 0
+  bulletSpeed: 100
+  fireRate: 1
+  stopDistance: 65
 --- !u!114 &5938006728526659012
 MonoBehaviour:
   m_ObjectHideFlags: 0

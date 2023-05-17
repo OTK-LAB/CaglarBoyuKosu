@@ -10,12 +10,14 @@ public class BossLevelController : MonoBehaviour
     private BossController boss;
     public GameObject screen;
     public PlayerController playerController;
+    public int lastLevelIndex;
 
     private void Start()
     {
         finish = FindObjectOfType<FınıshLine>();
         boss = FindObjectOfType<BossController>();
         playerController = FindObjectOfType<PlayerController>();
+        lastLevelIndex = PlayerPrefs.GetInt("LastLevelIndex", 0); // En son bölüm indexini al
     }
     private void Update()
     {
@@ -28,6 +30,17 @@ public class BossLevelController : MonoBehaviour
         {
             playerController.enabled = false;
             screen.SetActive(true);
+
+            int lastLevelIndex = PlayerPrefs.GetInt("LastLevelIndex", 1);
+            int currentLevelIndex = SceneManager.GetActiveScene().buildIndex;
+
+            // Eğer şu anki bölümün indexi en son kaydedilen bölümün indexinden büyükse,
+            // en son bölüm indexini güncelle
+            if (currentLevelIndex > lastLevelIndex)
+            {
+                PlayerPrefs.SetInt("LastLevelIndex", currentLevelIndex);
+                PlayerPrefs.Save();
+            }
         }
     }
 }

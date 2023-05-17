@@ -11,6 +11,12 @@ public class MainMenu : MonoBehaviour
 
    }
 
+    public void Continue()
+    {
+        int lastLevelIndex = PlayerPrefs.GetInt("LastLevelIndex", 1); // Kaydedilen son bölümün index deðerini alýr (varsayýlan olarak 1)
+        SceneManager.LoadScene(lastLevelIndex);
+    }
+
     public void QuitGame()
     {
         Debug.Log("QUIT");

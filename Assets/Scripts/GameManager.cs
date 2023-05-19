@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     //private bool gameHasEnded = false;
     public static GameManager instance;
     public int newMax;
+    public int Score = 0;
 
     private void Awake()
     {

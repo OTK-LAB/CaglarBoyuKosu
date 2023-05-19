@@ -23,12 +23,13 @@ public class NextLevel : MonoBehaviour
     }
     void Update()
     {
-        Setup(scoreNum);
+        Setup(GameManager.instance.Score);
     }
 
     public void Setup(int score)
     {
-        pointsText.text = $"Your score is {score}.";
+        scoreNum = score;
+        pointsText.text = $"Your score is {scoreNum}.";
         gameObject.SetActive(true);
     }
 

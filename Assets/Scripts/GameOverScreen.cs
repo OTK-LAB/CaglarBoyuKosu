@@ -18,18 +18,8 @@ public class GameOverScreen : MonoBehaviour
     }
     void Update()
     {
-        Setup(GameManager.instance.newMax);
+        Setup(GameManager.instance.Score);
     }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "puan")
-        {
-            GameManager.instance.newMax += 10;
-            other.gameObject.SetActive(false);
-        }
-    }
-
     public void Setup(int score)
     {
         scoreNum = score;

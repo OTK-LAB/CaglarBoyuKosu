@@ -23,12 +23,11 @@ public class PlayerCollison : MonoBehaviour
             screen.SetActive(true);
         }
     }
-
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("puan"))
         {
-            NextLevel.instance.scoreNum += 10;
+            GameManager.instance.Score += 10;
             other.gameObject.SetActive(false);
             Destroy(other.gameObject);
         }

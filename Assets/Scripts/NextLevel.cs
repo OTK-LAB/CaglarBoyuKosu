@@ -8,9 +8,14 @@ using UnityEngine.SocialPlatforms.Impl;
 public class NextLevel : MonoBehaviour
 {
     public Text pointsText;
-    private int scoreNum = 0;
+    public int scoreNum = 0;
     public GameObject screen;
+    public static NextLevel instance;
 
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
@@ -18,22 +23,12 @@ public class NextLevel : MonoBehaviour
     }
     void Update()
     {
-        Setup(GameManager.instance.newMax);
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "puan")
-        {
-            GameManager.instance.newMax += 10;
-            other.gameObject.SetActive(false);
-        }
+        Setup(scoreNum);
     }
 
     public void Setup(int score)
     {
-        scoreNum = score;
-        pointsText.text = $"Your score is {scoreNum}.";
+        pointsText.text = $"Your score is {score}.";
         gameObject.SetActive(true);
     }
 

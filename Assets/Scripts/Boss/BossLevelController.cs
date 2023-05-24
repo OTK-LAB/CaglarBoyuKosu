@@ -36,9 +36,9 @@ public class BossLevelController : MonoBehaviour
 
             // Eğer şu anki bölümün indexi en son kaydedilen bölümün indexinden büyükse,
             // en son bölüm indexini güncelle
-            if (currentLevelIndex > lastLevelIndex)
+            if ((currentLevelIndex + 1) > lastLevelIndex)
             {
-                PlayerPrefs.SetInt("LastLevelIndex", currentLevelIndex);
+                PlayerPrefs.SetInt("LastLevelIndex", (currentLevelIndex + 1));
                 PlayerPrefs.Save();
             }
         }

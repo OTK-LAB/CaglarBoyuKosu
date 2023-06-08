@@ -3,7 +3,22 @@ guid: 8b8e680e3ad471345883a3abaff0c56b
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Emission
+    second: {fileID: 2100000, guid: 07101cae1d5f1b442ad102d90ec7acd0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Op_Table
+    second: {fileID: 2100000, guid: c831d962aaa30124fbc40c286e6a9cea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Red_Wire
+    second: {fileID: 2100000, guid: d49b35726c22292479281881e82856d6, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -13,6 +13,7 @@ public class PlayerHealth : MonoBehaviour
     public GameObject screen;
     public bool PlayerDied=false;
     [SerializeField] AudioSource GetHitSound;
+    public AudioSource Died;
     private void Awake()
     {
         instance = this;
@@ -82,6 +83,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Die()
     {
+        Died.Play();
         PlayerDied = true;
         //BossController.instance.Attack = false;
         gameObject.SetActive(false);

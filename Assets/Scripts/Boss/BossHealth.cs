@@ -12,6 +12,7 @@ public class BossHealth : MonoBehaviour
     public bool isBossDied = false;
     public BossController bossController;
     public AudioSource hit;
+    public AudioSource Died;
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +54,7 @@ public class BossHealth : MonoBehaviour
 
     void Die()
     {
+        Died.Play();
         isBossDied = true;
 
     }

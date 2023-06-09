@@ -12,6 +12,7 @@ public class EnemyHealth : MonoBehaviour
     public bool isEnemydie = false;
     public Enemy EnemyScript;
     public AudioSource hit;
+    public AudioSource Died;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,7 +52,8 @@ public class EnemyHealth : MonoBehaviour
     }
 
     void Die()
-    {   
+    {
+        Died.Play();
         isEnemydie = true;
 
     }

@@ -8,6 +8,8 @@ public class PlayerCollison : MonoBehaviour
     public PlayerController controller;
     public GameObject screen;
     public bool GameOver = false;
+    public AudioSource Obstacle;
+    public AudioSource Puan;
 
     private void Awake()
     {
@@ -18,6 +20,7 @@ public class PlayerCollison : MonoBehaviour
     {
         if (collision.collider.tag == "Obstacle")
         {
+            PlayItemSound(Obstacle);
             GameOver = true;
             controller.enabled = false;
             screen.SetActive(true);
@@ -27,9 +30,18 @@ public class PlayerCollison : MonoBehaviour
     {
         if (other.CompareTag("puan"))
         {
+            PlayItemSound(Puan);
             GameManager.instance.Score += 10;
             other.gameObject.SetActive(false);
             Destroy(other.gameObject);
+        }
+    }
+
+    private void PlayItemSound(AudioSource audioSource)
+    {
+        if (audioSource != null)
+        {
+            audioSource.Play();
         }
     }
 }

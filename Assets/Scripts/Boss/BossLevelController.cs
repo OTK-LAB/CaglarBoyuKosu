@@ -9,6 +9,8 @@ public class BossLevelController : MonoBehaviour
     private FınıshLine finish;
     private BossController boss;
     public GameObject screen;
+    public GameObject screen1;
+    public GameObject screen2;
     public PlayerController playerController;
     public int lastLevelIndex;
 
@@ -30,6 +32,8 @@ public class BossLevelController : MonoBehaviour
         {
             playerController.enabled = false;
             screen.SetActive(true);
+            screen1.SetActive(false);
+            screen2.SetActive(false);
 
             int lastLevelIndex = PlayerPrefs.GetInt("LastLevelIndex", 1);
             int currentLevelIndex = SceneManager.GetActiveScene().buildIndex;

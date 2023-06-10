@@ -11,6 +11,7 @@ public class LevelController : MonoBehaviour
     public GameObject screen;
     public PlayerController playerController;
     public int lastLevelIndex;
+    public Canvas canvas;
 
     private void Start()
     {

@@ -2190,6 +2190,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8506770190929531487, guid: 10b11a52eb9174a46b97339bdd8823dd, type: 3}
   m_PrefabInstance: {fileID: 692942899}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &692942901 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 527365267836496576, guid: 10b11a52eb9174a46b97339bdd8823dd, type: 3}
+  m_PrefabInstance: {fileID: 692942899}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &706006051
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4326,6 +4331,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2085144220139609679, guid: b961d1a41af38bc478e7b420b8cbe36f, type: 3}
   m_PrefabInstance: {fileID: 1515685764}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1515685766 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2479655911024047311, guid: b961d1a41af38bc478e7b420b8cbe36f, type: 3}
+  m_PrefabInstance: {fileID: 1515685764}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1553326313
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5206,6 +5216,14 @@ PrefabInstance:
       propertyPath: screen
       value: 
       objectReference: {fileID: 967392034}
+    - target: {fileID: 5807864957333670416, guid: 86bffbff8b2653b4194f36319585a4e6, type: 3}
+      propertyPath: screen1
+      value: 
+      objectReference: {fileID: 1515685766}
+    - target: {fileID: 5807864957333670416, guid: 86bffbff8b2653b4194f36319585a4e6, type: 3}
+      propertyPath: screen2
+      value: 
+      objectReference: {fileID: 692942901}
     - target: {fileID: 5807864957333670416, guid: 86bffbff8b2653b4194f36319585a4e6, type: 3}
       propertyPath: playerController
       value: 

@@ -2853,6 +2853,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 648360876}
     - target: {fileID: 5807864957333670416, guid: 86bffbff8b2653b4194f36319585a4e6, type: 3}
+      propertyPath: screen1
+      value: 
+      objectReference: {fileID: 1471933738}
+    - target: {fileID: 5807864957333670416, guid: 86bffbff8b2653b4194f36319585a4e6, type: 3}
+      propertyPath: screen2
+      value: 
+      objectReference: {fileID: 912164574}
+    - target: {fileID: 5807864957333670416, guid: 86bffbff8b2653b4194f36319585a4e6, type: 3}
       propertyPath: playerController
       value: 
       objectReference: {fileID: 1085157312}
@@ -3465,6 +3473,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &912164574 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 527365267836496576, guid: 10b11a52eb9174a46b97339bdd8823dd, type: 3}
+  m_PrefabInstance: {fileID: 912164571}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &913392436
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5562,6 +5575,11 @@ PrefabInstance:
 --- !u!224 &1471933737 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2085144220139609679, guid: b961d1a41af38bc478e7b420b8cbe36f, type: 3}
+  m_PrefabInstance: {fileID: 1471933736}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1471933738 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2479655911024047311, guid: b961d1a41af38bc478e7b420b8cbe36f, type: 3}
   m_PrefabInstance: {fileID: 1471933736}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1491726861

@@ -2108,6 +2108,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1193020091295822733, guid: 3c3bc312aca0fa64aa31724cf226253b, type: 3}
   m_PrefabInstance: {fileID: 1568294004}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &829311802 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 527365267836496576, guid: 10b11a52eb9174a46b97339bdd8823dd, type: 3}
+  m_PrefabInstance: {fileID: 1884862654}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &868847289 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9021197118742127545, guid: be696bbc44622a54690611affcc5f10e, type: 3}
@@ -2630,6 +2635,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2148994728785035466, guid: 7446ace1b8d13d7468305e42dc4f5f7e, type: 3}
   m_PrefabInstance: {fileID: 1056026606}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1072193746 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2479655911024047311, guid: b961d1a41af38bc478e7b420b8cbe36f, type: 3}
+  m_PrefabInstance: {fileID: 983891099}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1147090080
 PrefabInstance:
@@ -4106,6 +4116,14 @@ PrefabInstance:
       propertyPath: screen
       value: 
       objectReference: {fileID: 441919665}
+    - target: {fileID: 5807864957333670416, guid: 86bffbff8b2653b4194f36319585a4e6, type: 3}
+      propertyPath: screen1
+      value: 
+      objectReference: {fileID: 829311802}
+    - target: {fileID: 5807864957333670416, guid: 86bffbff8b2653b4194f36319585a4e6, type: 3}
+      propertyPath: screen2
+      value: 
+      objectReference: {fileID: 1072193746}
     - target: {fileID: 5807864957333670416, guid: 86bffbff8b2653b4194f36319585a4e6, type: 3}
       propertyPath: playerController
       value: 

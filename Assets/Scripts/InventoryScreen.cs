@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,12 +9,13 @@ public class InventoryScreen : MonoBehaviour
     public Text foodCountText;
     public Text ammoCountText;
     public Button healButton;
+    public Button FireButton;
     private bool finish;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        FireButton.interactable = false;
     }
 
     // Update is called once per frame
@@ -28,6 +30,17 @@ public class InventoryScreen : MonoBehaviour
         UpdateItemCountUI();
     }
 
+
+    public void OnButtonTouchStart()
+    {
+        PlayerController.instance.canMove = false;
+    }
+
+    public void OnButtonTouchEnd()
+    {
+        PlayerController.instance.canMove = true;
+    }
+
     void UpdateItemCountUI()
     {
         int foodCount = PlayerInventory.instance.GetItemCount("food");
@@ -40,13 +53,27 @@ public class InventoryScreen : MonoBehaviour
     void Aktif()
     {
         Invoke(nameof(ActivateButton), 2f);
+        Invoke(nameof(OnButtonTouchStart), 2f);
+        Invoke(nameof(OnButtonTouchEnd), 2f);
     }
 
     void ActivateButton()
     {
         healButton.interactable = true;
+        FireButton.interactable = true;
+
     }
 
+    public void OnFireButtonClick()
+    {
+        int ammoCount = PlayerInventory.instance.GetItemCount("ammo");
+
+        if (ammoCount > 0)
+        {
+            Fire.instance.FireProjectile();
+            UpdateItemCountUI();
+        }
+    }
 
     public void OnHealButtonClick()
     {

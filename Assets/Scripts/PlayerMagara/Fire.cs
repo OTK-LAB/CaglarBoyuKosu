@@ -43,15 +43,15 @@ public class Fire : MonoBehaviour
         //}
         
 
-        if (enemyTransform != null && FınıshLine.instance.isFinished == true && Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject())
-        {
-            FireProjectile();
-        }
+        //if (enemyTransform != null && FınıshLine.instance.isFinished == true && Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject())
+        //{
+        //    FireProjectile();
+        //}
 
-        if (bossTransform != null && FınıshLine.instance.isFinished == true && Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject())
-        {
-            FireProjectile();
-        }
+        //if (bossTransform != null && FınıshLine.instance.isFinished == true && Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject())
+        //{
+        //    FireProjectile();
+        //}
     }
 
     private Transform FindObjectWithTag(string tag)

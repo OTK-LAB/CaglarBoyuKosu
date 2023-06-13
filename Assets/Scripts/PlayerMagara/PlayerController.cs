@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
     private Animator animator;
     public Rigidbody rigid;
+    public static PlayerController instance;
 
     [SerializeField] private float moveSpeed = 12f;
     [SerializeField] private float jumpForce = 12f;
@@ -14,41 +16,91 @@ public class PlayerController : MonoBehaviour
 
     private bool isGrounded;
     private bool isRolling;
-    private bool isFinished;
+    public bool isFinished;
+
+    private Vector2 swipeStartPosition;
+    private Vector2 startTouchPosition, swipeDelta;
+    private bool isSwiping = false;
 
     public bool canMove = true;
 
     private void Awake()
     {
+        instance = this;
         animator = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
     {
-        if (canMove)
+
+    }
+
+    private float GetHorizontalInput()
+    {
+        if (Touchscreen.current.primaryTouch.press.isPressed)
         {
-            float horizontalInput = Input.GetAxisRaw("Horizontal");
-            Vector3 movement = new Vector3(horizontalInput * moveSpeed, rigid.velocity.y, 20);
-            rigid.velocity = movement;
+            float touchX = Touchscreen.current.primaryTouch.position.x.ReadValue();
+            float screenWidth = Screen.currentResolution.width;
+            float normalizedX = touchX / screenWidth;
+            return (normalizedX - 0.5f) * 2f; // Normalize and map to -1 to 1 range
         }
+
+        return 0f;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) && isGrounded && !isRolling)
+        Vector3 initialVelocity = new Vector3(rigid.velocity.x, rigid.velocity.y, 20);
+        rigid.velocity = initialVelocity;
+
+        if (canMove)
         {
-            animator.SetBool("IsJumping", true);
-            isGrounded = false;
-            StartCoroutine(Jump());
+            float horizontalInput = GetHorizontalInput();
+            Vector3 movement = new Vector3(horizontalInput * moveSpeed, rigid.velocity.y, 20);
+            rigid.velocity = movement;
         }
 
-        if (Input.GetKeyDown(KeyCode.S) && !isRolling && isGrounded)
+        if (Touchscreen.current.primaryTouch.press.isPressed)
         {
-            animator.SetBool("IsRolling", true);
-            isRolling = true;
-            StartCoroutine(Roll());
+            if (!isSwiping)
+            {
+                startTouchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
+                isSwiping = true;
+            }
+
+            swipeDelta = Touchscreen.current.primaryTouch.position.ReadValue() - startTouchPosition;
+            // Eðer dikey hareket varsa
+            if (Mathf.Abs(swipeDelta.y) > 50)
+            {
+                // Eðer ekrana dokunan parmak yukarý doðru hareket ettiyse
+                if (swipeDelta.y > 0 && isGrounded && !isRolling)
+                {
+                    animator.SetBool("IsJumping", true);
+                    isGrounded = false;
+                    StartCoroutine(Jump());
+                }
+                // Eðer ekrana dokunan parmak aþaðý doðru hareket ettiyse
+                else if (swipeDelta.y < 0 && !isRolling && isGrounded)
+                {
+                    animator.SetBool("IsRolling", true);
+                    isRolling = true;
+                    StartCoroutine(Roll());
+                }
+
+                ResetSwipe();
+            }
         }
+        else
+        {
+            ResetSwipe();
+        }
+    }
+
+    private void ResetSwipe()
+    {
+        startTouchPosition = swipeDelta = Vector2.zero;
+        isSwiping = false;
     }
 
     private IEnumerator Jump()
@@ -69,7 +121,6 @@ public class PlayerController : MonoBehaviour
         rigid.useGravity = true;
         animator.SetBool("IsJumping", false);
     }
-
 
     private IEnumerator Roll()
     {
